@@ -1,4 +1,3 @@
-
 function tryMatch(re, str) {
   const matches = re.exec(str);
   if(!matches) {
@@ -63,7 +62,7 @@ function parseTable(table) {
     .map(lines => lines.trim());
   const chains = body.filter(line => line.indexOf(':') === 0);
   const rules = body.filter(line => line.indexOf('-A') === 0)
-    .map(parseRule)
+    .map(parseRule);
   return { name, chains, rules };
 }
 
@@ -79,28 +78,28 @@ function parseIptablesDoc(doc) {
     .reduce((obj, { name, ...rest }) => {
       obj[name] = rest;
       return obj;
-    }, {})
+    }, {});
 }
 
 function encodeRule({ 
-    chain,
-    protocol,
-    source,
-    sourcePort,
-    destination,
-    destinationPort,
-    destinationIp,
-    match,
-    state,
-    inInterface,
-    outInterface,
-    limit,
-    logPrefix, 
-    jump,
-    goto,
-    tos,
-    comment,
-  }) {
+  chain,
+  protocol,
+  source,
+  sourcePort,
+  destination,
+  destinationPort,
+  destinationIp,
+  match,
+  state,
+  inInterface,
+  outInterface,
+  limit,
+  logPrefix, 
+  jump,
+  goto,
+  tos,
+  comment,
+}) {
   function map2Str(str, elem) {
     if(elem) {
       return `${str} ${elem} `;
@@ -112,6 +111,7 @@ function encodeRule({
     map2Str('-p', protocol) +
     map2Str('-s', source) +
     map2Str('--sport', sourcePort) +
+    map2Str('-d', destination) +
     map2Str('--dport', destinationPort) +
     map2Str('-m', match) +
     map2Str('-m state --state', state) +
@@ -124,7 +124,7 @@ function encodeRule({
     map2Str('--log-prefix', logPrefix) +
     map2Str('--set-tos', tos) +
     map2Str('-m comment --comment', comment)
-    .trim();
+      .trim();
 }
 
 function encodeTable({ table, chains, rules }) {
