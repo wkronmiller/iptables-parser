@@ -1,0 +1,15 @@
+{
+  "name": "@wkronmiller/iptables-parser",
+  "version": "0.0.1",
+  "description": "Parse IPTable config files",
+  "main": "src/index.js",
+  "author": "William Rory Kronmiller",
+  "license": "MIT",
+  "private": false,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
