@@ -46,6 +46,26 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
 
       - run:
+          name: bump version
+          command: npm run bump-version
+
+      - run:
+          name: add github key
+          command: mkdir ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - run:
+          name: set git email
+          command:  git config --global user.email "wrk961@msn.com"
+
+      - run:
+          name: set git name
+          command:  git config --global user.name "Circle CI"
+
+      - run:
+          name: commit change
+          command: git add package.json && git commit --author='Circle CI <wrk961@msn.com>' -m "Bump version" && git push
+
+      - run:
           name: publish package
           command: npm publish --access public
 
