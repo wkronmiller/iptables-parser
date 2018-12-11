@@ -10,9 +10,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node test/index.js",
+    "bump-version": "version-bump git-commit-msg"
   },
   "devDependencies": {
-    "diff": "^3.5.0"
+    "@theo.gravity/version-bump": "^1.1.1",
+    "diff": "^3.5.0",
+    "version-bump-plugin-git": "^1.0.5"
   }
 }
