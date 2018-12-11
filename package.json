@@ -1,6 +1,6 @@
 {
   "name": "@wkronmiller/iptables-parser",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Parse IPTable config files",
   "main": "src/index.js",
   "author": "William Rory Kronmiller",
