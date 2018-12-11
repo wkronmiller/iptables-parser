@@ -99,7 +99,7 @@ const tables = parseIptablesDoc(String(fs.readFileSync('/etc/sysconfig/iptables'
 
 const { encodeIPTables } = require('../src/index');
 
-const tables = = {
+const tables = {
   "nat": {
     "chains": [
       ":PREROUTING ACCEPT [10446:1172408]",
