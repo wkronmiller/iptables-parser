@@ -1,6 +1,6 @@
 {
   "name": "@wkronmiller/iptables-parser",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Parse IPTable config files",
   "main": "src/index.js",
   "author": "William Rory Kronmiller",
@@ -18,5 +18,8 @@
     "diff": "^3.5.0",
     "version-bump-plugin-git": "^1.0.5"
   },
-  "keywords": ["iptables", "parser" ]
+  "keywords": [
+    "iptables",
+    "parser"
+  ]
 }
