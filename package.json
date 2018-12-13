@@ -18,5 +18,5 @@
     "diff": "^3.5.0",
     "version-bump-plugin-git": "^1.0.5"
   },
-  "keywords": ["iptables", "parser" ]
+  "keywords": ["iptables", "parser", "firewall", "centos"]
 }
