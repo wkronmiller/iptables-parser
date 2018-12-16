@@ -26,7 +26,7 @@ COMMIT
 -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -o enp2s0 -j ACCEPT
 -A FORWARD -i enp3s0.2048 -o enp3s0 -j ACCEPT
--A FORWARD -i enp3s0.666 -o enp3s0 -j ACCEPT
+-A FORWARD -i enp3s0.666 -d 10.0.0.1/32 -o enp3s0 -j ACCEPT
 -A LOGGING -m limit --limit 1/sec -j LOG --log-prefix "IPTables Blocked: "
 -A LOGGING -j DROP
 COMMIT

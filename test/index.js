@@ -8,6 +8,8 @@ const testRules = String(fs.readFileSync('test/test-rule.iptables'));
 const parsedRules = parseIptablesDoc(testRules);
 const encodedRules = encodeIPTables({ tables: parsedRules });
 
+console.log('encoded rules', encodedRules);
+
 if(encodedRules.trim() != testRules.trim()) {
   const { added, removed } = JsDiff.diffWords(testRules, encodedRules);
   if(added || removed) {
