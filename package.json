@@ -6,6 +6,15 @@
   "author": "William Rory Kronmiller",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wkronmiller/iptables-parser.git"
+  },
+  "homepage": "https://github.com/wkronmiller/iptables-parser/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/wkronmiller/iptables-parser/issues",
+    "email": "wrk961@gmail.com"
+  },
   "directories": {
     "test": "test"
   },
