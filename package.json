@@ -19,7 +19,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/index.js",
+    "test": "jest",
     "bump-version": "version-bump git-commit-msg"
   },
   "devDependencies": {

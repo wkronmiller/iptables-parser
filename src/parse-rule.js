@@ -26,9 +26,9 @@ function parseRule(rule) {
   const [, state] = tryMatch(/\s-m\sstate\s--state\s([^\s]+)/, rule);
 
   const [, limit] = tryMatch(/\s-m limit --limit\s([^\s]+)/, rule);
-  const [, logPrefix] = tryMatch(/\s--log-prefix\s("[^"]+")/, rule);
+  const [, logPrefix] = tryMatch(/\s--log-prefix\s"([^"]+)"/, rule);
   const [, tos] = tryMatch(/\s--set-tos\s([^\s]+)/, rule);
-  const [, comment] = tryMatch(/\s-m\scomment\s--comment\s("[^"]+")/, rule);
+  const [, comment] = tryMatch(/\s-m\scomment\s--comment\s"([^"]+)"/, rule);
 
   return { 
     rule,

@@ -1,3 +1,6 @@
+const { parseIptablesDoc, encodeIPTables, } = require('./index');
+
+const doc = `
 *nat
 :PREROUTING ACCEPT [10446:1172408]
 :INPUT ACCEPT [2:128]
@@ -27,7 +30,7 @@ COMMIT
 -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -o enp2s0 -j ACCEPT
 -A FORWARD -i enp3s0.2048 -o enp3s0 -j ACCEPT
--A FORWARD -i enp3s0.666 -d 10.0.0.1/32 -o enp3s0 -j ACCEPT
+-A FORWARD -d 10.0.0.1/32 -i enp3s0.666 -o enp3s0 -j ACCEPT
 -A LOGGING -m limit --limit 1/sec -j LOG --log-prefix "IPTables Blocked: "
 -A LOGGING -j DROP
 -A lowercase-chain -j DROP
@@ -41,3 +44,10 @@ COMMIT
 :POSTROUTING ACCEPT [131843756:73129954576]
 -A PREROUTING -p tcp --dport 22 -m tcp -j TOS --set-tos 0x10/0x3f -m comment --comment "Make ssh faster"
 COMMIT
+`;
+
+test('Parse and re-encode a full IPTables Doc', () => {
+  const tables = parseIptablesDoc(doc);
+  const encoded = encodeIPTables({ tables });
+  expect(doc.trim()).toBe(encoded.trim());
+});

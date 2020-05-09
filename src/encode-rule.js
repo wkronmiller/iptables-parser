@@ -1,6 +1,6 @@
-function map2Str(str, elem) {
+function map2Str(str, elem, quot = '') {
   if(elem) {
-    return `${str} ${elem} `;
+    return `${str} ${quot}${elem}${quot} `;
   }
   return '';
 }
@@ -24,7 +24,8 @@ function encodeRule({
   tos,
   comment,
 }) {
-  return map2Str('-A', chain) +
+  return (
+    map2Str('-A', chain) +
     map2Str('-p', protocol) +
     map2Str('-s', source) +
     map2Str('--sport', sourcePort) +
@@ -38,10 +39,10 @@ function encodeRule({
     map2Str('-j', jump) +
     map2Str('-g', goto) +
     map2Str('--to-destination', destinationIp) +
-    map2Str('--log-prefix', logPrefix) +
+    map2Str('--log-prefix', logPrefix, quot = '"') +
     map2Str('--set-tos', tos) +
-    map2Str('-m comment --comment', comment)
-      .trim();
+    map2Str('-m comment --comment', comment, quot = '"')
+  ).trim();
 }
 
 module.exports = { encodeRule };
