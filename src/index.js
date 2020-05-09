@@ -10,7 +10,7 @@ function tryMatch(re, str) {
  * Parse a single rule for a chain
  */
 function parseRule(rule) {
-  const [, chain] = tryMatch(/-A\s([A-Z]+)\s/, rule);
+  const [, chain] = tryMatch(/-A\s([^\s]+)\s/, rule);
   const [, protocol] = tryMatch(/\s-p\s([A-Za-z]+)/, rule);
   const [, source] = tryMatch(/\s-s\s([^\s]+)/, rule);
   const [, sourcePort] = tryMatch(/\s--sport\s([^\s]+)/, rule);

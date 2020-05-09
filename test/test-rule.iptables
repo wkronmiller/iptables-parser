@@ -12,6 +12,7 @@ COMMIT
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [565105:269130484]
 :LOGGING - [0:0]
+:lowercase-chain - [0:0]
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p udp --sport 67:68 --dport 67:68 -m udp -i enp3s0 -j ACCEPT
 -A INPUT -p udp -s 10.0.0.0/8 --sport 67:68 --dport 67:68 -m udp -j ACCEPT
@@ -29,6 +30,7 @@ COMMIT
 -A FORWARD -i enp3s0.666 -d 10.0.0.1/32 -o enp3s0 -j ACCEPT
 -A LOGGING -m limit --limit 1/sec -j LOG --log-prefix "IPTables Blocked: "
 -A LOGGING -j DROP
+-A lowercase-chain -j DROP
 COMMIT
 
 *mangle
